@@ -630,7 +630,7 @@ qq.Templating = function(spec) {
             var bar = getProgress(id),
                 percent;
 
-            if (bar) {
+            if (bar && total > 0) {
                 percent = Math.round(loaded / total * 100);
 
                 if (percent === 100) {
@@ -660,6 +660,9 @@ qq.Templating = function(spec) {
 
         resetProgress: function(id) {
             setProgressBarWidth(id, 0);
+            if (id == null){
+                this.hideTotalProgress();
+            }
         },
 
         resetTotalProgress: function() {
